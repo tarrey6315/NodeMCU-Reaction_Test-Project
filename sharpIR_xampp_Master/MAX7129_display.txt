@@ -1,0 +1,43 @@
+LED MATRIX EDITOR WEBSITE
+// https://xantorohara.github.io/led-matrix-editor  
+
+void display_num(int n){
+ byte num1[8] = {
+       0b00000000,0b00001000,0b00011000,0b00001000,
+       0b00001000,0b00001000,0b00011100,0b00000000}; //1
+ byte num2[8] = {
+       0b00000000,0b00011000,0b00100100,0b00001000,
+       0b00010000,0b00100000,0b00111100,0b00000000}; //2
+ byte num3[8] = {
+       0b00000000,0b00111000,0b00000100,0b00111000,
+       0b00000100,0b00000100,0b00111000,0b00000000};//3
+ byte num4[8] = {
+       0b00011000,0b00011100,0b00010110,0b00010011,
+       0b01111111,0b01111111,0b00010000,0b00000000}; //4 
+	byte num_little[8] = {
+       0b00000000,0b00000000,0b00000000,0b00011000,
+       0b00011000,0b00000000,0b00000000,0b00000000};
+	byte num_some[8] = {
+     0b00000000,0b00000000,0b00111100,0b00111100,
+      0b00111100,0b00111100,0b00000000,0b00000000};
+	byte num_all[8] = {
+       0b11111111,0b11111111,0b11111111,0b11111111,
+       0b11111111,0b11111111,0b11111111,0b11111111};
+
+ switch(n){
+   case 1:
+    for(int j=0;j<8;j++) LEDarr.setRow(0,j,num1[j]); break;
+   case 2:
+    for(int j=0;j<8;j++) LEDarr.setRow(0,j,num2[j]); break;
+   case 3:
+    for(int j=0;j<8;j++) LEDarr.setRow(0,j,num3[j]); break;
+   case 4:
+    for(int j=0;j<8;j++) LEDarr.setRow(0,j,num4[j]); break;
+   case 999:
+    for(int j=0;j<8;j++) LEDarr.setRow(0,j,num_all[j]); break;
+  }
+}
+
+l1s1,l3s1,l6s1,l4s1,r2
+l1s2,l3s2,r2
+
