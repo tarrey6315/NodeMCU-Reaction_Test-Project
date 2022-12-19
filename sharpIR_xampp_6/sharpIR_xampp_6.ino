@@ -9,7 +9,7 @@
 #define buffersize 10
 #define detect_dist  10
 #define prepare_delay 3000
-#define deviceNum 3
+#define deviceNum 6
 
 
 const char* ssid = "SOCLAB";
@@ -84,7 +84,7 @@ void setup(){
 
 void loop(){
   if(WiFi.status()== WL_CONNECTED) {
-      display_num(deviceNum);
+      display_num(deviceNum-3);
       volts = analogRead(A0)*0.0048828125;  // value from sensor * (5/1024) 
       dist = 29.988 * pow(volts, -1.173); // 10cm-80cm, 1080, Sharp IR GP2Y0A21SK0F
 //      dist = 12.08 * pow(volts , -1.058);// 4cm-30cm,430
@@ -95,7 +95,7 @@ void loop(){
 //        website = "http://140.120.14.51/device/update_"+ String(deviceNum)" + ".php";
 //        access_dataBase(postData, website);
      
-//      if (millis()- dist_timer >= 50){
+      if (millis()- dist_timer >= 5){
         if(dist <= detect_dist){ 
           distBuffer[bCount] = dist;
           bCount++;
@@ -104,7 +104,7 @@ void loop(){
           clrTimer = millis();
           dist_timer = millis();
         }       
-//      }
+      }
       if(millis()> clrTimer + 2000){
         for(int i=0; i<buffersize; i++){
           distBuffer[i] = 0;  

@@ -9,7 +9,7 @@
 #define buffersize 10
 #define detect_dist  10
 #define prepare_delay 3000
-#define deviceNum 3
+#define deviceNum 5
 
 
 const char* ssid = "SOCLAB";
@@ -48,7 +48,7 @@ void access_dataBase(String data, String web){
   http.begin(web);  
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");        
   httpCode = http.POST(postData); 
-  payload = http.getString();
+  payload = http.getString(); 
 //  Serial.println(payload);    
   http.end(); 
 }
@@ -95,7 +95,7 @@ void loop(){
 //        website = "http://140.120.14.51/device/update_"+ String(deviceNum)" + ".php";
 //        access_dataBase(postData, website);
      
-//      if (millis()- dist_timer >= 50){
+      if (millis()- dist_timer >= 5){
         if(dist <= detect_dist){ 
           distBuffer[bCount] = dist;
           bCount++;
@@ -104,7 +104,7 @@ void loop(){
           clrTimer = millis();
           dist_timer = millis();
         }       
-//      }
+      }
       if(millis()> clrTimer + 2000){
         for(int i=0; i<buffersize; i++){
           distBuffer[i] = 0;  
