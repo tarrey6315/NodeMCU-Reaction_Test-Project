@@ -176,7 +176,7 @@ void loop()
 {
    //mysql server connecting
   if(WiFi.status()== WL_CONNECTED) {
-    postData = "FLAG2=1";
+    postData = "ID=1";
     website = "http://140.120.14.51/device/getdata.php";
     access_dataBase(postData, website);  
     myObject = JSON.parse(payload);
